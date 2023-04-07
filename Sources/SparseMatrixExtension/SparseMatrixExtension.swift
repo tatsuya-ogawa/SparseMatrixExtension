@@ -2,9 +2,9 @@ import simd
 import Accelerate
 extension SparseMatrix_Double{
     public struct Triplet{
-        var row:Int
-        var col:Int
-        var value:Double
+        public var row:Int
+        public var col:Int
+        public var value:Double
         public init(row: Int, col: Int, value: Double) {
             self.row = row
             self.col = col
