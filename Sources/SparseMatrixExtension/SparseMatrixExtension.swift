@@ -1,7 +1,7 @@
 import simd
 import Accelerate
 extension SparseMatrix_Double{
-    struct Triplet{
+    public struct Triplet{
         var row:Int
         var col:Int
         var value:Double
@@ -11,7 +11,7 @@ extension SparseMatrix_Double{
             self.value = value
         }
     }
-    static func fromTriplets(triplets:[Triplet],rowCount:Int32,columnCount:Int32)->SparseMatrix_Double{
+    public static func fromTriplets(triplets:[Triplet],rowCount:Int32,columnCount:Int32)->SparseMatrix_Double{
         let attributes = SparseAttributes_t()
         
         var row: [Int32] =      triplets.map{Int32($0.row)}
@@ -27,18 +27,18 @@ extension SparseMatrix_Double{
                                            &row, &column,
                                            &values)
     }
-    func toTriplets()->[Triplet]{
+    public func toTriplets()->[Triplet]{
         return (0..<self.structure.columnCount).enumerated().flatMap{(columnIndice,columnStart) in
             return (self.structure.columnStarts[Int(columnStart)]..<self.structure.columnStarts[Int(columnStart)+1]).enumerated().map{ (valueIndice,rowIndice) in
                 return Triplet(row: Int(self.structure.rowIndices[rowIndice]), col: columnIndice, value: self.data[valueIndice])
             }
         }
     }
-    enum ConcatAxis{
+    public enum ConcatAxis{
         case row
         case column
     }
-    static func concat(a:SparseMatrix_Double,b:SparseMatrix_Double,axis:ConcatAxis)->SparseMatrix_Double{
+    public static func concat(a:SparseMatrix_Double,b:SparseMatrix_Double,axis:ConcatAxis)->SparseMatrix_Double{
         switch axis{
         case .row: do {
             return SparseMatrix_Double.fromTriplets(triplets: a.toTriplets() + b.toTriplets(), rowCount: a.structure.rowCount + b.structure.rowCount, columnCount: a.structure.columnCount)
