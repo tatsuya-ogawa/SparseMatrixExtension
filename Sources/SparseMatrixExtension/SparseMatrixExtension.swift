@@ -5,7 +5,7 @@ extension SparseMatrix_Double{
         var row:Int
         var col:Int
         var value:Double
-        init(row: Int, col: Int, value: Double) {
+        public init(row: Int, col: Int, value: Double) {
             self.row = row
             self.col = col
             self.value = value
