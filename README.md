@@ -1,4 +1,4 @@
-# SparseMatrix_Double Extensions
+# SparseMatrix Extensions
 
 This Swift library provides extensions to the SparseMatrix_Double class, enhancing its functionality for handling sparse matrix data structures. The sparse matrix representation is beneficial for matrices with a significant number of zero elements, as it allows for efficient memory usage and faster computations.
 
@@ -40,6 +40,3 @@ let concatenatedMatrixColumn = SparseMatrix_Double.concat(a: a, b: b, axis: .col
 ## Dependencies
 simd for vector and matrix operations
 Accelerate for efficient linear algebra operations
-
-##Limitations
-These extensions are specifically tailored for sparse matrices of Double data type. For other data types or more advanced operations, consider using other libraries or extending this implementation.
