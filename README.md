@@ -13,7 +13,7 @@ This Swift library provides extensions to the SparseMatrix_Double class, enhanci
 import simd
 import Accelerate
 
-let triplets: [SparseMatrix_Double.Triplet] = [
+let triplets: [Triplet] = [
     .init(row: 0, col: 0, value: 1.0),
     .init(row: 1, col: 1, value: 2.0),
     .init(row: 2, col: 2, value: 3.0)
